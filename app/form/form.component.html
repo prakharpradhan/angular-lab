@@ -1,0 +1,61 @@
+<div class="main">
+    <form #prodForm="ngForm">
+
+        {{prodForm.value | json}}
+
+
+        {{form | json}}
+        <div class="form-group">
+            <label for="productId">ProductId:</label>
+            <input minlength="3" maxlength="5" pattern="^\d{1,5}$" required [(ngModel)]="form.prodID" name="id"
+                #id="ngModel" id="productId" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="id.touched && !id.valid">
+                <div *ngIf="id.errors.required"> Id is Required</div>
+                <div *ngIf="id.errors.minlength"> Id should be more than 3 digit</div>
+                <div *ngIf="id.errors.pattern"> Id is incorrect</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="productName">ProductName:</label>
+            <input maxlength="15" pattern="^[a-zA-Z\s]+$" required name="name" #name="ngModel"
+                [(ngModel)]="form.prodName" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="name.touched && !name.valid">
+                <div *ngIf="name.errors.required"> Name is Required</div>
+                <div *ngIf="name.errors.pattern"> Name is incorrect</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="productCost">ProductCost:</label>
+            <input maxlength="5" pattern="^\d{1,5}$" required name="cost" #cost="ngModel" [(ngModel)]="form.prodCost"
+                id="productCost" type="text" class="form-control">
+            <div class="alert alert-danger" *ngIf="cost.touched &&  !cost.valid">
+                <div *ngIf="cost.errors.required"> Cost is Required</div>
+                <div *ngIf="cost.errors.pattern"> Cost is incorrect</div>
+            </div>
+        </div>
+        <div class="form-check-inline">
+            <label for="productOnline" class="form-check-label">ProductOnline: </label>
+            <input id="productOnline" type="radio" name="radio" class="form-check-inline" [ngModel]="form.prodType"
+                value="true">Yes
+            <input id="productOnline" type="radio" name="radio" class="form-check-inline" [ngModel]="form.prodType"
+                value="false">No
+        </div>
+        <div class="form-group">
+            <label for="productCategory">ProductCategory:</label>
+            <select name="prodCategory" [(ngModel)]="form.prodCategory">
+                <option value="">Select product category</option>
+                <option *ngFor="let cat of category">{{cat}}</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="productStore">ProductStore:</label>
+            <input type="checkbox" name="prodStore" value="store1" [(ngModel)]="form.prodStore">BigBazar
+            <input type="checkbox" name="prodStore" value="store2" [(ngModel)]="form.prodStore">Dmart
+            <input type="checkbox" name="prodStore" value="store3" [(ngModel)]="form.prodStore">Relaince
+            <input type="checkbox" name="prodStore" value="store4" [(ngModel)]="form.prodStore">MegaStore
+        </div>
+        <button class="btn btn-primary" (click)="submit()" id="button">SUBMIT </button>
+    </form>
+
+</div>

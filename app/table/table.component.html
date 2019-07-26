@@ -1,0 +1,85 @@
+<H1>EMPLOYEE TABLE</H1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <label> ID</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="empId">
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <label> Name </label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="empName">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <label> Salary </label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="empSalary">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <label> Department</label>
+        </div>
+        <div class="col-sm-6">
+            <input type="text" [(ngModel)]="empDepartment">
+        </div>
+    </div>
+
+    <button (click)="onADD()" class="btn btn-primary"> ADD DATA </button>
+
+
+    <table align="center">
+        <thead>
+
+            <td>ID</td>
+            <td>Name</td>
+            <td>salary</td>
+            <td>Department</td>
+            <td colspan="2">Action</td>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let emp1 of emp">
+                <td *ngIf="check"><input type="text" name="id" [(ngModel)]="empId" [disabled]="check"></td>
+                <td *ngIf="!check"><input type="text" name="id" [(ngModel)]="empId" [disabled]="check"></td>
+                <td *ngIf="check"><input type="text" name="name" [(ngModel)]="empName" [disabled]="check"></td>
+                <td *ngIf="!check"><input type="text" name="name" [(ngModel)]="empName" [disabled]="check"></td>
+                <td *ngIf="check"><input type="text" name="salary" [(ngModel)]="empSalary" [disabled]="check"></td>
+                <td *ngIf="!check"><input type="text" name="salary" [(ngModel)]="empSsalary" [disabled]="check"></td>
+                <td *ngIf="check"><input type="text" name="dept" [(ngModel)]="empDepartment" [disabled]="check"></td>
+                <td *ngIf="!check"><input type="text" name="dept" [(ngModel)]="empDepartment" [disabled]="check"></td>
+                <td *ngIf="check"><button class="btn btn-primary" (click)="onUpdate(emp1)">UPDATE</button></td>
+                <td><button class="btn btn-primary" (click)="onRemove(emp1)">DELETE</button></td>
+                <td *ngIf="!check"><button class="btn btn-primary" (click)="update(emp1)">SAVE</button></td>
+            </tr> -->
+            <tr *ngFor="let cust of emp">
+                    <td>{{cust.id}}</td>
+                    <td>
+                        <span *ngIf="!cust.isEditable">{{cust.name}}</span>
+                        <input type="text" [(ngModel)]="cust.name" *ngIf="cust.isEditable" /></td>
+                    <td>
+                        <span *ngIf="!cust.isEditable">{{cust.salary}}</span>
+                        <input type="text" [(ngModel)]="cust.salary" *ngIf="cust.isEditable" /></td>
+                    <td>
+                        <span *ngIf="!cust.isEditable">{{cust.department}}</span>
+                        <input type="text" [(ngModel)]="cust.department" *ngIf="cust.isEditable" /></td>
+                    <td>
+                        <button (click)="cust.isEditable=!cust.isEditable" *ngIf="!cust.isEditable">Edit</button>
+                        <button *ngIf="cust.isEditable" (click)="cust.isEditable=!cust.isEditable">Save</button>
+                    </td>
+                    <td>
+                        <button (click)="deleteEmployee(cust)">Delete</button>
+                    </td>
+                    </tr>
+      
+    </table>
+
+</div>
